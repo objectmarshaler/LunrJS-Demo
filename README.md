@@ -2,7 +2,8 @@
 
 This is an another demo to show How LunrJs works.Live example: http://objectmarshaler.com/
 
-<b>Installation:<b>
+Installation:
+
 
 git clone https://github.com/objectmarshaler/LunrJS-Demo.git
 
