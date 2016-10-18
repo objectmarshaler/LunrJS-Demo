@@ -1,14 +1,26 @@
 {
   "name": "demo",
   "version": "1.0.0",
-  "description": "LunrJS Pipeline",
+  "description": "LunrJS Pipeline Tutorial",
   "main": "app.js",
   "dependencies": {
     "lunr": "^0.7.1"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "bower": "^1.7.9",
+    "grunt": "^1.0.1",
+    "http-server": "^0.9.0",
+    "jquery": "^3.1.1",
+    "lunr": "^0.7.1",
+    "lunr-index-build": "0.0.1",
+    "requirejs": "^2.3.2"
+  },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "postinstall": "bower install",
+    "prestart": "npm install",
+    "start": "http-server ./app -a localhost -p 8000 -c-1",
+    "index": "lunr-index-build --field title:10 --field category:100 --field body --ref id app/data.json > app/index.json"
   },
   "repository": {
     "type": "git",

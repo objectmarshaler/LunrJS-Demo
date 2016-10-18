@@ -1,0 +1,11 @@
+{
+  "name": "angular-phonecat",
+  "description": "LunrJS Pipeline",
+  "version": "0.0.0",
+  "homepage": "https://github.com/objectmarshaler/LunrJS-Demo#readme",
+  "license": "MIT",
+  "private": true,
+  "dependencies": {
+    "jquery": "2.2.x"
+  }
+}

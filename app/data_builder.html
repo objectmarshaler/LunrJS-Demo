@@ -1,0 +1,42 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+	<title>Data Builder</title>
+	<script src="bower_components/jquery/dist/jquery.js"></script>
+	<meta charset="utf-8" />
+	<script>
+		$(document).ready(function () {
+			var data = {};
+			data.tutorials = [];
+			$("input[type='button']").on("click", function () {
+				var tutorial = {};
+				tutorial.id = $("#tid").val();
+				tutorial.category = $("#category").val();
+				tutorial.title = $("#tTitle").val();
+				tutorial.body = $("#htmlContent").val();
+				data.tutorials.push(tutorial);
+				$("#tid").val("");
+				$("#category").val("");
+				$("#tTitle").val("");
+				$("#htmlContent").val("");
+				$("#jsonContent").val(JSON.stringify(data));
+			})
+		});
+	</script>
+</head>
+<body>
+	<fieldset>
+		<div>ID:<input id="tid" type="text" /></div>
+		<div>Category:<input id="category" type="text" /></div>
+		<div>Title:<input id="tTitle" type="text" /></div>
+		<div>Body:<textarea id="htmlContent" rows="50" cols="100"></textarea></div>
+		<input type="button" value="Add" />
+
+	</fieldset>
+
+	<br />
+	JSON Content:
+	<br />
+	<textarea id="jsonContent" rows="50" cols="100"></textarea>
+</body>
+</html>
