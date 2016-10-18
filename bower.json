@@ -6,6 +6,10 @@
   "license": "MIT",
   "private": true,
   "dependencies": {
-    "jquery": "2.2.x"
+    "jquery": "2.2.x",
+    "lunr.js": "lunr#^0.7.1",
+    "mustache.js": "^2.2.1",
+    "text": "^2.0.15",
+    "requirejs": "^2.3.2"
   }
 }
