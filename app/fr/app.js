@@ -1,13 +1,20 @@
 require([
-  'bower_components/jquery/dist/jquery.js',
-  'bower_components/mustache.js/mustache.js',
-  'bower_components/lunr.js/lunr.js',
-  'bower_components/text/text!templates/tutorial_view.mustache',
-  'bower_components/text/text!templates/tutorial_list.mustache',
-  'bower_components/text/text!data.json',
-  'bower_components/text/text!index.json'
-], function (_, Mustache, lunr, tutorialView, tutorialList, data, indexDump) {
-
+  '../bower_components/jquery/dist/jquery.js',
+  '../bower_components/mustache.js/mustache.js',
+  '../bower_components/lunr.js/lunr.js',
+  '../bower_components/lunr-languages/lunr.stemmer.support.js',
+  '../bower_components/lunr-languages/lunr.fr.js',
+  '../bower_components/text/text!../templates/tutorial_view.mustache',
+  '../bower_components/text/text!../templates/tutorial_list.mustache',
+  '../bower_components/text/text!data.json',
+  '../bower_components/text/text!index.json'
+], function (_, Mustache, lunr, stemmerSupport, fr, tutorialView, tutorialList, data, indexDump) {
+    stemmerSupport(lunr); // adds lunr.stemmerSupport
+    fr(lunr); // adds lunr.fr key
+    lunr(function () {
+        // use the language (fr)
+        this.use(lunr.fr);
+    });
     var renderTutorialList = function (qs) {
         $("#tutorial-list-container")
         .empty()
@@ -34,10 +41,10 @@ require([
         console.timeEnd('search')
     }
 
-    var indexDump = JSON.parse(indexDump)
-    console.time('load')
-    window.idx = lunr.Index.load(indexDump)
-    console.timeEnd('load')
+    var indexDump = JSON.parse(indexDump);
+    console.time('load');
+    window.idx = lunr.Index.load(indexDump);
+    console.timeEnd('load');
 
     var tutorials = JSON.parse(data).tutorials.map(function (raw) {
         return {
